@@ -9,5 +9,4 @@ public class GoodIgruhaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GoodIgruhaApplication.class, args);
 	}
-
 }
