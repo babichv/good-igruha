@@ -27,9 +27,18 @@ public class Game {
     @Column
     private String title;
     @ManyToMany
+    @JoinTable(name = "games_genres",
+            joinColumns = @JoinColumn(name = "games_id"),
+            inverseJoinColumns = @JoinColumn(name = "genres_id"))
     private Set<Genre> genres = new HashSet<>();
     @ManyToMany
+    @JoinTable(name = "games_developers",
+            joinColumns = @JoinColumn(name = "games_id"),
+            inverseJoinColumns = @JoinColumn(name = "developers_id"))
     private Set<Developer> developers = new HashSet<>();
     @ManyToMany
+    @JoinTable(name = "games_platforms",
+            joinColumns = @JoinColumn(name = "games_id"),
+            inverseJoinColumns = @JoinColumn(name = "platforms_id"))
     private Set<Platform> platforms = new HashSet<>();
 }

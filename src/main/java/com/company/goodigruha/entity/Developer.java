@@ -1,5 +1,6 @@
 package com.company.goodigruha.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +24,7 @@ public class Developer {
 
     @Column
     private String name;
-
+    @JsonIgnore
     @ManyToMany(mappedBy = "developers")
     private Set<Game> games = new HashSet<>();
 }

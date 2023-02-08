@@ -11,6 +11,7 @@ import java.util.List;
 public interface GameRepository extends JpaRepository<Game, Long> {
     @Query("SELECT g FROM Game g")
     List<Game> getAll();
+    Game getByTitleAllIgnoreCase(String title);
 }
 
 

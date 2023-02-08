@@ -1,5 +1,7 @@
 package com.company.goodigruha.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +25,7 @@ public class Genre {
     private Long id;
     @Column
     private String name;
+    @JsonIgnore
     @ManyToMany(mappedBy = "genres")
     private Set<Game> games = new HashSet<>();
 }
