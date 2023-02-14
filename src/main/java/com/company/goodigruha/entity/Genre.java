@@ -24,7 +24,7 @@ public class Genre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
-    private String name;
+    private String title;
     @JsonIgnore
     @ManyToMany(mappedBy = "genres")
     private Set<Game> games = new HashSet<>();

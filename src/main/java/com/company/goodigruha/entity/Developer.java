@@ -23,7 +23,7 @@ public class Developer {
     private Long id;
 
     @Column
-    private String name;
+    private String title;
     @JsonIgnore
     @ManyToMany(mappedBy = "developers")
     private Set<Game> games = new HashSet<>();

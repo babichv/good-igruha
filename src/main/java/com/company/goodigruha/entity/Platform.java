@@ -23,7 +23,7 @@ public class Platform {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
-    private String name;
+    private String title;
     @JsonIgnore
     @ManyToMany(mappedBy = "platforms")
     private Set<Game> games = new HashSet<>();
