@@ -38,4 +38,7 @@ public class PlatformService {
     public Platform update(Platform platform){
         return platformRepository.save(platform);
     }
+    public void delete(Long id){
+        platformRepository.deleteById(id);
+    }
 }

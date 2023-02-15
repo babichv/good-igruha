@@ -61,6 +61,10 @@ public class GameService {
         return gameRepository.save(game);
     }
 
+    public void delete(Long id){
+        gameRepository.deleteById(id);
+    }
+
     public Game assignGenreToGame(Long gameId, Long genreId){
         Set<Genre> genres;
         Game game = gameRepository.findById(gameId).get();

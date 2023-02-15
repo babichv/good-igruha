@@ -37,4 +37,7 @@ public class GenreService {
     public Genre update(Genre genre){
         return genreRepository.save(genre);
     }
+    public void delete(Long id){
+        genreRepository.deleteById(id);
+    }
 }
