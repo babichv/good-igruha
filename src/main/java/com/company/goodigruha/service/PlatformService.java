@@ -19,15 +19,15 @@ public class PlatformService {
         this.platformRepository = platformRepository;
     }
 
-    public List<Platform> findAll(){
+    public List<Platform> getAll(){
         return platformRepository.getAll();
     }
 
-    public Optional<Platform> findById(Long id){
-        return platformRepository.findById(id);
+    public Optional<Platform> getById(Long id){
+        return Optional.ofNullable(platformRepository.getById(id));
     }
 
-    public Optional<Platform> findByTitle(String title){
+    public Optional<Platform> getByTitle(String title){
         return Optional.ofNullable(platformRepository.getByTitleIgnoreCase(title));
     }
 
@@ -38,7 +38,8 @@ public class PlatformService {
     public Platform update(Platform platform){
         return platformRepository.save(platform);
     }
-    public void delete(Long id){
+
+    public void deleteById(Long id){
         platformRepository.deleteById(id);
     }
 }

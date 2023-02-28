@@ -22,11 +22,11 @@ public class GenreService {
         return genreRepository.getAll();
     }
 
-    public Optional<Genre> findById(Long id){
-        return genreRepository.findById(id);
+    public Optional<Genre> getById(Long id){
+        return Optional.ofNullable(genreRepository.getById(id));
     }
 
-    public Optional<Genre> findByTitle(String title){
+    public Optional<Genre> getByTitle(String title){
         return Optional.ofNullable(genreRepository.getByTitleIgnoreCase(title));
     }
 
@@ -37,7 +37,6 @@ public class GenreService {
     public Genre update(Genre genre){
         return genreRepository.save(genre);
     }
-    public void delete(Long id){
-        genreRepository.deleteById(id);
-    }
+
+    public void deleteById(Long id) { genreRepository.deleteById(id);}
 }

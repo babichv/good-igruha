@@ -41,15 +41,15 @@ public class GameService {
         this.developerRepository = developerRepository;
     }
 
-    public List<Game> findAll(){
+    public List<Game> getAll(){
         return gameRepository.getAll();
     }
 
-    public Optional<Game> findById(Long id){
-        return gameRepository.findById(id);
+    public Optional<Game> getById(Long id){
+        return Optional.ofNullable(gameRepository.getById(id));
     }
 
-    public Optional<Game> findByTitle(String title){
+    public Optional<Game> getByTitle(String title){
         return Optional.ofNullable(gameRepository.getByTitleAllIgnoreCase(title));
     }
 
@@ -61,14 +61,21 @@ public class GameService {
         return gameRepository.save(game);
     }
 
-    public void delete(Long id){
-        gameRepository.deleteById(id);
-    }
+    public void deleteById(Long id){ gameRepository.deleteById(id);}
 
     public Game assignGenreToGame(Long gameId, Long genreId){
         Set<Genre> genres;
         Game game = gameRepository.findById(gameId).get();
         Genre genre = genreRepository.findById(genreId).get();
+        genres = game.getGenres();
+        genres.add(genre);
+        game.setGenres(genres);
+        return gameRepository.save(game);
+    }
+    public Game assignGenreToGame(String gameTitle, String genreTitle){
+        Set<Genre> genres;
+        Game game = gameRepository.getByTitleAllIgnoreCase(gameTitle);
+        Genre genre = genreRepository.getByTitleIgnoreCase(genreTitle);
         genres = game.getGenres();
         genres.add(genre);
         game.setGenres(genres);
@@ -84,10 +91,29 @@ public class GameService {
         return gameRepository.save(game);
     }
 
+    public Game assignPlatformToGame(String gameTitle, String platformTitle){
+        Set<Platform> platforms;
+        Game game = gameRepository.getByTitleAllIgnoreCase(gameTitle);
+        Platform platform = platformRepository.getByTitleIgnoreCase(platformTitle);
+        platforms = game.getPlatforms();
+        platforms.add(platform);
+        game.setPlatforms(platforms);
+        return gameRepository.save(game);
+    }
     public Game assignDeveloperToGame(Long gameId, Long developerId){
         Set<Developer> developers;
         Game game = gameRepository.findById(gameId).get();
         Developer developer = developerRepository.findById(developerId).get();
+        developers = game.getDevelopers();
+        developers.add(developer);
+        game.setDevelopers(developers);
+        return gameRepository.save(game);
+    }
+
+    public Game assignDeveloperToGame(String gameTitle, String developerTitle){
+        Set<Developer> developers;
+        Game game = gameRepository.getByTitleAllIgnoreCase(gameTitle);
+        Developer developer = developerRepository.getByTitleIgnoreCase(developerTitle);
         developers = game.getDevelopers();
         developers.add(developer);
         game.setDevelopers(developers);

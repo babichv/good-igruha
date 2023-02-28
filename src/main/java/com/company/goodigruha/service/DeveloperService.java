@@ -19,15 +19,15 @@ public class DeveloperService {
         this.developerRepository = developerRepository;
     }
 
-    public List<Developer> findAll(){
+    public List<Developer> getAll(){
         return developerRepository.getAll();
     }
 
-    public Optional<Developer> findById(Long id){
-        return developerRepository.findById(id);
+    public Optional<Developer> getById(Long id){
+        return Optional.ofNullable(developerRepository.getById(id));
     }
 
-    public Optional<Developer> findByTitle(String title){
+    public Optional<Developer> getByTitle(String title){
         return Optional.ofNullable(developerRepository.getByTitleIgnoreCase(title));
     }
     public Developer save(Developer developer){
@@ -37,7 +37,8 @@ public class DeveloperService {
     public Developer update(Developer developer){
         return developerRepository.save(developer);
     }
-    public void delete(Long id) {
+
+    public void deleteById(Long id){
         developerRepository.deleteById(id);
     }
 }
