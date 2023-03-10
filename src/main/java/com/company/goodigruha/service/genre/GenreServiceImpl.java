@@ -1,7 +1,8 @@
-package com.company.goodigruha.service;
+package com.company.goodigruha.service.genre;
 
 import com.company.goodigruha.model.Genre;
 import com.company.goodigruha.repository.GenreRepository;
+import com.company.goodigruha.service.genre.GenreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +13,7 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class GenreServiceImpl implements GenreService{
+public class GenreServiceImpl implements GenreService {
 
     private final GenreRepository genreRepository;
 

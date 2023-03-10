@@ -1,7 +1,8 @@
-package com.company.goodigruha.service;
+package com.company.goodigruha.service.developer;
 
 import com.company.goodigruha.model.Developer;
 import com.company.goodigruha.repository.DeveloperRepository;
+import com.company.goodigruha.service.developer.DeveloperService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +13,7 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class DeveloperServiceImpl implements DeveloperService{
+public class DeveloperServiceImpl implements DeveloperService {
     private final DeveloperRepository developerRepository;
 
     public List<Developer> getAll(){

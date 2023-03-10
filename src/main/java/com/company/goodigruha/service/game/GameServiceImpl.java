@@ -1,10 +1,11 @@
-package com.company.goodigruha.service;
+package com.company.goodigruha.service.game;
 
 import com.company.goodigruha.model.Game;
 import com.company.goodigruha.repository.DeveloperRepository;
 import com.company.goodigruha.repository.GameRepository;
 import com.company.goodigruha.repository.GenreRepository;
 import com.company.goodigruha.repository.PlatformRepository;
+import com.company.goodigruha.service.game.GameService;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class GameServiceImpl implements GameService{
+public class GameServiceImpl implements GameService {
     private final GameRepository gameRepository;
     private final GenreRepository genreRepository;
     private final PlatformRepository platformRepository;

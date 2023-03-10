@@ -1,7 +1,8 @@
-package com.company.goodigruha.service;
+package com.company.goodigruha.service.platform;
 
 import com.company.goodigruha.model.Platform;
 import com.company.goodigruha.repository.PlatformRepository;
+import com.company.goodigruha.service.platform.PlatformService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +13,7 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class PlatformServiceImpl implements PlatformService{
+public class PlatformServiceImpl implements PlatformService {
     private final PlatformRepository platformRepository;
 
     public List<Platform> getAll(){
