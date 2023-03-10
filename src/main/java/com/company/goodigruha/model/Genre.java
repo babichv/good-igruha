@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,15 +15,16 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "developers")
-public class Developer {
+@Table(name = "genres")
+public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
     private String title;
+
     @JsonIgnore
-    @ManyToMany(mappedBy = "developers")
+    @ManyToMany(mappedBy = "genres")
     private Set<Game> games = new HashSet<>();
 }

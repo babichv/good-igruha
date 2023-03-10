@@ -1,8 +1,8 @@
 package com.company.goodigruha.service;
 
-import com.company.goodigruha.entity.Genre;
+import com.company.goodigruha.model.Genre;
 import com.company.goodigruha.repository.GenreRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,19 +11,17 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class GenreService {
-    @Autowired
+@RequiredArgsConstructor
+public class GenreServiceImpl implements GenreService{
+
     private final GenreRepository genreRepository;
 
-    public GenreService(GenreRepository genreRepository) {
-        this.genreRepository = genreRepository;
-    }
     public List<Genre> getAll(){
         return genreRepository.getAll();
     }
 
     public Optional<Genre> getById(Long id){
-        return Optional.ofNullable(genreRepository.getById(id));
+        return genreRepository.findById(id);
     }
 
     public Optional<Genre> getByTitle(String title){

@@ -1,8 +1,8 @@
 package com.company.goodigruha.service;
 
-import com.company.goodigruha.entity.Developer;
+import com.company.goodigruha.model.Developer;
 import com.company.goodigruha.repository.DeveloperRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,25 +11,22 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class DeveloperService {
-    @Autowired
+@RequiredArgsConstructor
+public class DeveloperServiceImpl implements DeveloperService{
     private final DeveloperRepository developerRepository;
-
-    public DeveloperService(DeveloperRepository developerRepository) {
-        this.developerRepository = developerRepository;
-    }
 
     public List<Developer> getAll(){
         return developerRepository.getAll();
     }
 
     public Optional<Developer> getById(Long id){
-        return Optional.ofNullable(developerRepository.getById(id));
+        return developerRepository.findById(id);
     }
 
-    public Optional<Developer> getByTitle(String title){
+    public Optional<Developer> getByTitle(String title) {
         return Optional.ofNullable(developerRepository.getByTitleIgnoreCase(title));
     }
+
     public Developer save(Developer developer){
         return developerRepository.save(developer);
     }

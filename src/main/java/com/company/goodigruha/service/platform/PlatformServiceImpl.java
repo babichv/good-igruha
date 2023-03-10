@@ -1,8 +1,8 @@
 package com.company.goodigruha.service;
 
-import com.company.goodigruha.entity.Platform;
+import com.company.goodigruha.model.Platform;
 import com.company.goodigruha.repository.PlatformRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,20 +11,16 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class PlatformService {
-    @Autowired
+@RequiredArgsConstructor
+public class PlatformServiceImpl implements PlatformService{
     private final PlatformRepository platformRepository;
-
-    public PlatformService(PlatformRepository platformRepository) {
-        this.platformRepository = platformRepository;
-    }
 
     public List<Platform> getAll(){
         return platformRepository.getAll();
     }
 
     public Optional<Platform> getById(Long id){
-        return Optional.ofNullable(platformRepository.getById(id));
+        return platformRepository.findById(id);
     }
 
     public Optional<Platform> getByTitle(String title){
